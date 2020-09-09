@@ -8,7 +8,7 @@ function Checkout() {
       <div className="checkout__left">
         <img className="checkout__ad" src="" />
         <div>
-          <h2 className="checkout__title">Your shopping basket</h2>
+          <h2 className="checkout__title">Shopping basket</h2>
 
           {/* Basket Item */}
         </div>

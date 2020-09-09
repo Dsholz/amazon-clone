@@ -2,7 +2,7 @@ import React from "react";
 import "../styles/Home.css";
 import Product from "./Product";
 
-function Home() {
+function Home({ darkMode }) {
   return (
     <div className="home">
       <div className="home__container">
@@ -15,6 +15,7 @@ function Home() {
         <div className="home__row">
           <Product
             id=""
+            darkMode={darkMode}
             title="New Apple MacBook Pro (13-inch, 16GB RAM, 512GB SSD Storage, Magic Keyboard) - Space Gray"
             image="https://m.media-amazon.com/images/I/71bElkQQ7LL._AC_UL320_.jpg"
             price={735}
@@ -23,6 +24,7 @@ function Home() {
           />
           <Product
             id=""
+            darkMode={darkMode}
             title="Samsung Galaxy Note20 5G Factory Unlocked Android Cell Phone | US Version | 128GB Storage Magic Keyboard"
             image="https://m.media-amazon.com/images/I/81uteSzwW0L._AC_UY218_.jpg"
             price={799}
@@ -34,6 +36,7 @@ function Home() {
         <div className="home__row">
           <Product
             id=""
+            darkMode={darkMode}
             title="Wireless Earbuds Bluetooth 5.0 with【24Hrs Charging Case Headphones in-Ear"
             image="https://m.media-amazon.com/images/I/31D7mhDrxeL._AC_UY218_.jpg"
             price={39}
@@ -42,6 +45,7 @@ function Home() {
           />
           <Product
             id=""
+            darkMode={darkMode}
             title="USB Streaming Podcast PC Microphone,Professional Computer Mic 192kHz/24bit"
             image="https://m.media-amazon.com/images/I/61r+74P5GKL._AC_UL320_.jpg"
             price={68}
@@ -50,6 +54,7 @@ function Home() {
           />
           <Product
             id=""
+            darkMode={darkMode}
             title="Beats by Dr. Dre Studio 3 Wireless Over-Ear Headphones Built-in Mic"
             image="https://m.media-amazon.com/images/I/61sEi8z8oML._AC_UY218_.jpg"
             price={174}
@@ -61,6 +66,7 @@ function Home() {
         <div className="home__row">
           <Product
             id=""
+            darkMode={darkMode}
             title="Amazon Brand – Stone & Beam Lauren Down-Filled Oversized Sofa Couch Faux Leather Convertible Futon Sofa w/Removable Armrests, Metal Legs, 2 Cupholders"
             image="https://m.media-amazon.com/images/I/81sCK9A+WoL._AC_UL320_.jpg"
             price={585}

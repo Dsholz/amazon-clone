@@ -1,16 +1,25 @@
 import React from "react";
 import SearchIcon from "@material-ui/icons/Search";
 import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
+import Brightness3Icon from "@material-ui/icons/Brightness3";
+import WbSunnyIcon from "@material-ui/icons/WbSunny";
 import "../styles/Header.css";
 import { Link } from "react-router-dom";
 import { useStateValue } from "../StateProvider";
 
-function Header() {
+function Header({ darkMode, toggleDarkMode }) {
   const [state, dispatch] = useStateValue();
   const { basket } = state;
 
   return (
-    <div className="header">
+    <div
+      style={
+        darkMode
+          ? { backgroundColor: "#131921" }
+          : { backgroundColor: "#585858" }
+      }
+      className="header"
+    >
       <Link to="/">
         <img
           className="header__logo"
@@ -45,6 +54,10 @@ function Header() {
             </span>
           </div>
         </Link>
+
+        <div onClick={toggleDarkMode} className="header__option">
+          {darkMode ? <WbSunnyIcon /> : <Brightness3Icon />}
+        </div>
       </div>
     </div>
   );
