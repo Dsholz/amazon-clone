@@ -6,10 +6,16 @@ import WbSunnyIcon from "@material-ui/icons/WbSunny";
 import "../styles/Header.css";
 import { Link } from "react-router-dom";
 import { useStateValue } from "../StateProvider";
+import { auth } from "../firebase/firebase";
 
 function Header({ darkMode, toggleDarkMode }) {
-  const [state, dispatch] = useStateValue();
-  const { basket } = state;
+  const [{ basket, user }] = useStateValue();
+
+  const handleAuth = () => {
+    if (user) {
+      auth.signOut();
+    }
+  };
 
   return (
     <div
@@ -23,6 +29,7 @@ function Header({ darkMode, toggleDarkMode }) {
       <Link to="/">
         <img
           className="header__logo"
+          alt="Header Logo"
           src="http://pngimg.com/uploads/amazon/amazon_PNG11.png"
         />
       </Link>
@@ -33,10 +40,16 @@ function Header({ darkMode, toggleDarkMode }) {
       </div>
 
       <div className="header__nav">
-        <div className="header__option">
-          <span className="header__option-line-one">Hello Guest</span>
-          <span className="header__option-line-two">Sign In</span>
-        </div>
+        <Link to={!user ? "/login" : "/"}>
+          <div onClick={handleAuth} className="header__option">
+            <span className="header__option-line-one">
+              Hello {user ? user?.email : "Guest"}
+            </span>
+            <span className="header__option-line-two">
+              {user ? "Sign Out" : "Sign In"}
+            </span>
+          </div>
+        </Link>
         <div className="header__option">
           <span className="header__option-line-one">Returns</span>
           <span className="header__option-line-two">Orders</span>

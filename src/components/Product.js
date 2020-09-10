@@ -1,21 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import "../styles/Product.css";
 import { useStateValue } from "../StateProvider";
 
 function Product({ id, title, image, price, decimal, rating, darkMode }) {
-  const [state, dispatch] = useStateValue(useStateValue);
+  const [, dispatch] = useStateValue(useStateValue);
+  const [btnDisabled, setBtnDisabled] = useState(false);
 
   const addToBasket = () => {
-    dispatch({
-      type: "ADD_TO_BASKET",
-      item: {
-        id,
-        title,
-        image,
-        totalPrice: price + decimal,
-        rating,
-      },
-    });
+    if (!btnDisabled) {
+      dispatch({
+        type: "ADD_TO_BASKET",
+        item: {
+          id,
+          title,
+          image,
+          totalPrice: price + decimal,
+          rating,
+        },
+      });
+
+      setBtnDisabled(true);
+    } else {
+      alert("Item already in Basket");
+    }
   };
 
   return (
@@ -39,8 +46,12 @@ function Product({ id, title, image, price, decimal, rating, darkMode }) {
         <div className="product__rating">
           {Array(rating)
             .fill()
-            .map(() => (
-              <p>⭐</p>
+            .map((_, index) => (
+              <p key={index}>
+                <span role="img" aria-label="rating">
+                  ⭐
+                </span>
+              </p>
             ))}
         </div>
       </div>

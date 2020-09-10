@@ -3,14 +3,20 @@ import CurrencyFormat from "react-currency-format";
 import { useStateValue } from "../StateProvider";
 import "../styles/Subtotal.css";
 
-function SubTotal() {
-  const [state, dispatch] = useStateValue();
-  const { basket } = state;
+function SubTotal({ darkMode }) {
+  const [{ basket }] = useStateValue();
 
   return (
     <Fragment>
       {basket?.length !== 0 && (
-        <div className="subtotal">
+        <div
+          style={
+            darkMode
+              ? { backgroundColor: "#8b8b8b" }
+              : { backgroundColor: "#dddddd" }
+          }
+          className="subtotal"
+        >
           <CurrencyFormat
             renderText={(value) => (
               <div className="subtotal__amount">
