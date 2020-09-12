@@ -33,7 +33,7 @@ const Checkout = forwardRef(({ darkMode }, ref) => {
 
               {/* Checkout Product */}
 
-              <FlipMove leaveAnimation="ease">
+              <FlipMove>
                 {basket.map((item) => (
                   <CheckoutProduct
                     id={item.id}

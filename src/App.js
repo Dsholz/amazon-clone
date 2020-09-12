@@ -7,6 +7,12 @@ import Checkout from "./components/Checkout";
 import Login from "./components/Login";
 import { auth } from "./firebase/firebase";
 import { useStateValue } from "./StateProvider";
+import Payment from "./components/Payment";
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
+import Orders from "./components/Orders";
+
+const promise = loadStripe("pk_test_pFQ2hNvKDbKDLWgtR41UgPl400kTsCqWtF");
 
 function App() {
   const [, dispatch] = useStateValue();
@@ -14,6 +20,7 @@ function App() {
 
   useEffect(() => {
     auth.onAuthStateChanged((authUser) => {
+      console.log(authUser);
       if (authUser) {
         dispatch({
           type: "SET_USER",
@@ -49,12 +56,28 @@ function App() {
           <Route path="/login">
             <Login />
           </Route>
+          <Route path="/orders">
+            <Header
+              darkMode={darkMode}
+              toggleDarkMode={() => setDarkMode(!darkMode)}
+            />
+            <Orders />
+          </Route>
           <Route path="/checkout">
             <Header
               darkMode={darkMode}
               toggleDarkMode={() => setDarkMode(!darkMode)}
             />
             <Checkout darkMode={darkMode} />
+          </Route>
+          <Route path="/payment">
+            <Header
+              darkMode={darkMode}
+              toggleDarkMode={() => setDarkMode(!darkMode)}
+            />
+            <Elements stripe={promise}>
+              <Payment />
+            </Elements>
           </Route>
         </Switch>
       </div>

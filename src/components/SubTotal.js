@@ -2,9 +2,11 @@ import React, { Fragment } from "react";
 import CurrencyFormat from "react-currency-format";
 import { useStateValue } from "../StateProvider";
 import "../styles/Subtotal.css";
+import { useHistory } from "react-router-dom";
 
 function SubTotal({ darkMode }) {
   const [{ basket }] = useStateValue();
+  const history = useHistory();
 
   return (
     <Fragment>
@@ -36,7 +38,9 @@ function SubTotal({ darkMode }) {
             <p>This order contains a gift</p>
           </div>
 
-          <button>Proceed to Checkout</button>
+          <button onClick={() => history.push("/payment")}>
+            Proceed to Checkout
+          </button>
         </div>
       )}
     </Fragment>
